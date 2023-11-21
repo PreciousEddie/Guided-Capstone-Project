@@ -47,48 +47,50 @@ const Houses = () => {
     return (
         <Container>
             <h1 className="mt-5 mb-4">Houses of Westeros and Beyond</h1>
-            {error && <p className="text-danger">{error}</p>}
+            { error && <p className="text-danger">{ error }</p> }
             <Row>
-                {houses.map((house) => (
-                    <Col key={house.url} md={6} lg={4} className="mb-4">
+                { houses.map((house) => (
+                    <Col key={ house.url } md={ 6 } lg={ 4 } className="mb-4">
                         <Card>
                             <Card.Body>
                                 <Card.Title>
-                                    <Link to={`/houses/${house.url.split("/").pop()}`}>
-                                        <strong>{house.name}</strong>
+                                    <Link to={ `/houses/${house.url.split("/").pop()}` }>
+                                        <strong>{ house.name }</strong>
                                     </Link>
                                 </Card.Title>
                                 <Card.Text>
                                     <p>
-                                        Titles: {house.titles.join(", ") || "No Titles"}
+                                        Titles: { house.titles.join(", ") || "No Titles" }
                                         <br />
-                                        Current Lord:{" "}
-                                        {house.currentLord ? (
-                                            <Link to={`/character/${house.currentLord.split("/").pop()}`}>{house.currentLord.split("/").pop()}</Link>
+                                        Words: { house.words || "No Words" }
+                                        <br />
+                                        Current Lord:{ " " }
+                                        { house.currentLord ? (
+                                            <Link to={ `/character/${house.currentLord.split("/").pop()}` }>{ house.currentLord.split("/").pop() }</Link>
                                         ) : (
                                             "N/A"
-                                        )}
+                                        ) }
                                         <br />
-                                        Sworn Members:{" "}
-                                        {house.swornMembers &&
+                                        Sworn Members:{ " " }
+                                        { house.swornMembers &&
                                             house.swornMembers.map((member, index) => (
-                                                <span key={index}>
-                                                    <Link to={`/character/${member.split("/").pop()}`}>{member.split("/").pop()}</Link>
-                                                    {index < house.swornMembers.length - 1 && ", "}
+                                                <span key={ index }>
+                                                    <Link to={ `/character/${member.split("/").pop()}` }>{ member.split("/").pop() }</Link>
+                                                    { index < house.swornMembers.length - 1 && ", " }
                                                 </span>
-                                            ))}
+                                            )) }
                                     </p>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
                     </Col>
-                ))}
+                )) }
             </Row>
-            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
-            <select value={pageSize} onChange={(e) => handlePageSizeChange(parseInt(e.target.value, 10))}>
-                <option value={10}>10 per page</option>
-                <option value={20}>20 per page</option>
-                <option value={50}>50 per page</option>
+            <Pagination currentPage={ currentPage } totalPages={ totalPages } onPageChange={ handlePageChange } />
+            <select value={ pageSize } onChange={ (e) => handlePageSizeChange(parseInt(e.target.value, 10)) }>
+                <option value={ 10 }>10 per page</option>
+                <option value={ 20 }>20 per page</option>
+                <option value={ 50 }>50 per page</option>
             </select>
         </Container>
     );
