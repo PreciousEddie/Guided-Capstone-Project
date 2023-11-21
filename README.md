@@ -85,20 +85,20 @@ The Game of Thrones API React App is a web application that allows users to expl
 We chose these features to provide users with a comprehensive overview of the Game of Thrones universe. By including character and house information users can immerse themselves in the rich lore of the series.
 
 ## User Flow
-Homepage:
+- **Homepage:**
 Upon visiting the website, users are greeted with a homepage featuring a simple introduction to the Game of Thrones universe.
 
-Character Page:
+- **Character Page:**
 Users can navigate to the "Characters" section to view a list of characters and click on each for detailed information.
 
-House Page:
+- **House Page:**
 The "Houses" section provides insights into different houses in the Game of Thrones world.
 
 ## API
 The application uses the Game of Thrones API to fetch data. The API provides comprehensive information about characters, houses, and books in the Game of Thrones series.
 
 ## Technology Stack
-React\
-React Router\
-Bootstrap (or React Bootstrap)\
-Axios for API requests
+- React
+- React Router
+- Bootstrap (or React Bootstrap)
+- Axios for API requests
