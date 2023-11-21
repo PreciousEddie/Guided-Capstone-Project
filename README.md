@@ -68,3 +68,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Game of Thrones API React App
+
+## Description
+
+The Game of Thrones API React App is a web application that allows users to explore information about the characters and houses from the Game of Thrones universe. It leverages the Game of Thrones API to fetch and display relevant data.
+
+## Features
+
+- **Character Information:** View details about various characters, including their names, gender, birth, death, spouses, aliases, and titles.
+- **House Information:** Explore information about different houses, such as their name, titles, current lord, sworn members, and words.
+
+### Why These Features?
+
+We chose these features to provide users with a comprehensive overview of the Game of Thrones universe. By including character and house information users can immerse themselves in the rich lore of the series.
+
+## User Flow
+- **Homepage:**
+Upon visiting the website, users are greeted with a homepage featuring a simple introduction to the Game of Thrones universe.
+
+- **Character Page:**
+Users can navigate to the "Characters" section to view a list of characters and click on each for detailed information.
+
+- **House Page:**
+The "Houses" section provides insights into different houses in the Game of Thrones world.
+
+## API
+The application uses the Game of Thrones API to fetch data. The API provides comprehensive information about characters, houses, and books in the Game of Thrones series.
+
+## Technology Stack
+- React
+- React Router
+- Bootstrap (or React Bootstrap)
+- Axios for API requests
