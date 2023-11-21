@@ -71,6 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 # Game of Thrones API React App
 
+[Link to Deployed Site](https://PreciousEddie.github.io/Guided-Capstone-Project)
+
 ## Description
 
 The Game of Thrones API React App is a web application that allows users to explore information about the characters and houses from the Game of Thrones universe. It leverages the Game of Thrones API to fetch and display relevant data.
