@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Guided-Capstone-Project/static/css/main.3a93b27a.css",
+    "main.js": "/Guided-Capstone-Project/static/js/main.b428b7a0.js",
+    "index.html": "/Guided-Capstone-Project/index.html",
+    "main.3a93b27a.css.map": "/Guided-Capstone-Project/static/css/main.3a93b27a.css.map",
+    "main.b428b7a0.js.map": "/Guided-Capstone-Project/static/js/main.b428b7a0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3a93b27a.css",
+    "static/js/main.b428b7a0.js"
+  ]
+}
