@@ -1,26 +1,34 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./NavBar.css";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 function NavBar() {
     const routes = [
         { to: "/", text: "Home" },
-        { to: "/characters", text: "Characters of Westeros and Beyond" },
-        { to: "/houses", text: "Houses of Westeros and Beyond" },
+        { to: "/characters", text: "Characters" },
+        { to: "/houses", text: "Houses" },
     ];
+
     return (
-        <nav className={ styles["navigation"] }>
-            { routes.map((route, index) => (
-                <NavLink
-                    key={ index }
-                    className={ ({ isActive, isPending }) => `${styles["navigation__item"]} ${isActive ? styles["navigation__item--active"] : ""}` }
-                    to={ route.to }
-                >
-                    { route.text }
-                </NavLink>
-            )) }
-        </nav>
+        <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">
+                    { routes.map((route, index) => (
+                        <NavLink
+                            key={ index }
+                            className="nav-link"
+                            activeClassName="active"
+                            to={ route.to }
+                        >
+                            { route.text }
+                        </NavLink>
+                    )) }
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     );
-};
+}
 
 export default NavBar;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import IceAndFireApi from "../../services/IceAndFireApi";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { Container, Card, Spinner } from "react-bootstrap";
 
 const Character = () => {
     const { characterId } = useParams();
@@ -11,10 +12,13 @@ const Character = () => {
     useEffect(() => {
         const fetchCharacter = async () => {
             try {
+                console.log("Fetching character with ID:", characterId);
                 const response = await IceAndFireApi.getCharacterById(characterId);
+                console.log("Character response:", response);
                 setCharacter(response);
                 await fetchAllegiances(response.allegiances);
             } catch (error) {
+                console.error("Error fetching character:", error);
                 setError("Error fetching character. Please try again later.");
             }
         };
@@ -33,50 +37,63 @@ const Character = () => {
             setAllegiances(allegianceNames);
         };
 
+        console.log("Effect - characterId:", characterId);
         fetchCharacter();
     }, [characterId]);
 
+    console.log("Render - character:", character);
+    console.log("Render - allegiances:", allegiances);
+
     if (!character) {
-        return <div>Loading...</div>;
+        return <Spinner color="light"></Spinner>;
     }
 
     return (
-        <div>
-            <h1>Character Information</h1>
-            { error && <p>{ error }</p> }
-            <div>
-                <h2>{ character.name || (character.aliases.length > 0 ? character.aliases[0] : "Unnamed") }</h2>
-                <p>Culture: { character.culture || "Unknown" }</p>
-                <p>Gender: { character.gender === "male" ? "♂️" : character.gender === "female" ? "♀️" : "Unknown" }</p>
-                <p>Born: { character.born || "Unknown" }</p>
-                <p>Died: { character.died || "Unknown" }</p>
-                <p>Titles: { character.titles.join(", ") || "No Titles" }</p>
-                <p>Father: { character.father || "Unknown" }</p>
-                <p>Mother: { character.mother || "Unknown" }</p>
-                <p>
-                    Spouse:{ " " }
-                    { character.spouse ? (
-                        <a href={ character.spouse } target="_blank" rel="noopener noreferrer">
-                            Click To View
-                        </a>
-                    ) : (
-                        "Unknown"
-                    ) }
-                </p>
-                <p>
-                    Allegiances:{ " " }
-                    { allegiances.length > 0 ? (
-                        allegiances.map((allegiance, index) => (
-                            <a key={ index } href={ character.allegiances[index] } target="_blank" rel="noopener noreferrer">
-                                { allegiance }
-                            </a>
-                        ))
-                    ) : (
-                        "Unknown"
-                    ) }
-                </p>
-            </div>
-        </div>
+        <Container>
+            <h1 className="mt-5 mb-4">Character Information</h1>
+            { error && <p className="text-danger">{ error }</p> }
+            <Card>
+                <Card.Body>
+                    <Card.Title>
+                        { character.name || (character.aliases.length > 0 ? character.aliases[0] : "Unnamed") }
+                    </Card.Title>
+                    <Card.Text>
+                        <p>Culture: { character.culture || "Unknown" }</p>
+                        <p>Gender: { character.gender === "Male" ? "♂️" : character.gender === "Female" ? "♀️" : "Unknown" }</p>
+                        <p>Born: { character.born || "Unknown" }</p>
+                        <p>Died: { character.died || "Unknown" }</p>
+                        <p>Titles: { character.titles.join(", ") || "No Titles" }</p>
+                        <p>Aliases: { character.aliases.join(", ") || "No Aliases" }</p>
+                        <p>Father: { character.father || "Unknown" }</p>
+                        <p>Mother: { character.mother || "Unknown" }</p>
+                        <p>
+                            Spouse:{ " " }
+                            { character.spouse ? (
+                                <Link to={ `/character/${character.spouse.split("/").pop()}` }>{ character.spouse.split("/").pop() }</Link>
+                            ) : (
+                                "Unknown"
+                            ) }
+                        </p>
+                        <p>
+                            Allegiances:{ " " }
+                            { allegiances.length > 0 ? (
+                                allegiances.map((allegiance, index) => (
+                                    <Link
+                                        key={ index }
+                                        to={ `/house/${character.allegiances[index].split("/").pop()}` }
+                                        className="mr-2"
+                                    >
+                                        { allegiance }
+                                    </Link>
+                                ))
+                            ) : (
+                                "Unknown"
+                            ) }
+                        </p>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Container>
     );
 };
 

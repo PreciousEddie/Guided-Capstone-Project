@@ -17,7 +17,7 @@ function AppRoute() {
                 element={ <Characters /> }
             />
             <Route
-                path="/character/:id"
+                path="/character/:characterId"
                 element={ <Character /> }
             />
             <Route

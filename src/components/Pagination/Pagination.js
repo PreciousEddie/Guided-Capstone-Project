@@ -1,20 +1,22 @@
 import React from "react";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    const handlePrevClick = () => {
+        onPageChange(currentPage - 1);
+    };
+
+    const handleNextClick = () => {
+        onPageChange(currentPage + 1);
+    };
+
     return (
-        <div className="pagination">
-            <button
-                onClick={ () => onPageChange(currentPage - 1) }
-                disabled={ currentPage === 1 }
-            >
-                &larr; Previous
+        <div>
+            <button onClick={ handlePrevClick } disabled={ currentPage === 1 }>
+                Prev
             </button>
-            <span>Page { currentPage } of { totalPages }</span>
-            <button
-                onClick={ () => onPageChange(currentPage + 1) }
-                disabled={ currentPage === totalPages }
-            >
-                Next &rarr;
+            <span>{ `Page ${currentPage}` }</span>
+            <button onClick={ handleNextClick } disabled={ currentPage === totalPages }>
+                Next
             </button>
         </div>
     );
